@@ -26,9 +26,8 @@ const sumFibs = (aNumber) => {
   for (let item of fibNew) if (item % 2 === 1) odds.push(item);
 
   // Get the sum of all odd fibonacci numbers;
-  sumTotal = 0;
+  let sumTotal = 0;
   for (let item of odds) sumTotal += item;
-
   return sumTotal;
 };
 
