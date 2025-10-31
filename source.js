@@ -9,15 +9,27 @@ User Stories
 */
 
 const sumFibs = (aNumber) => {
-  let fibonacciNumbers = [];
-  for (let i = 0; i < aNumber; i++) {
-    if (i < 2) {
-      fibonacciNumbers.push(i);
-    }
-  }
-  return fibonacciNumbers;
+  // Capture all fibonacci numbers
+  let fibNos = [0, 1];
+  for (let i = 2; i < aNumber + 1; i++)
+    fibNos.push(fibNos[i - 1] + fibNos[i - 2]);
+
+  // Remove the first number because it is a zero
+  fibNos.shift();
+
+  // Exclude nos that are higher than aNumber
+  let fibNew = [];
+  for (let item of fibNos) if (item <= aNumber) fibNew.push(item);
+
+  // Capture all odd fibonacci numbers from fibNew
+  let odds = [];
+  for (let item of fibNew) if (item % 2 === 1) odds.push(item);
+
+  // Get the sum of all odd fibonacci numbers;
+  sumTotal = 0;
+  for (let item of odds) sumTotal += item;
+
+  return sumTotal;
 };
 
-// Test
-aNumber = 10
-console.log(sumFibs(aNumber));
+console.log(sumFibs(75024));
